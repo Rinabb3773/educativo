@@ -1,0 +1,37 @@
+<main>
+  <?php if (isset($_SESSION['username'])) { ?>
+    <h2>Últimas discusiones</h2>
+    <div class="discussion">
+      <h3>Título de discusión</h3>
+      <p>Descripción de discusión</p>
+      <p class="metadata">Creado por <a href="#">Nombre de usuario</a> hace 2 días</p>
+    </div>
+    <div class="discussion">
+      <h3>Título de discusión</h3>
+      <p>Descripción de discusión</p>
+      <p class="metadata">Creado por <a href="#">Nombre de usuario</a> hace 1 semana</p>
+    </div>
+    <div class="discussion">
+      <h3>Título de discusión</h3>
+      <p>Descripción de discusión</p>
+      <p class="metadata">Creado por <a href="#">Nombre de usuario</a> hace 3 semanas</p>
+    </div>
+  <?php } else { ?>
+    <h2>Iniciar sesión</h2>
+    <form method="post" action="login.php">
+      <label for="username">Nombre de usuario:</label>
+      <input type="text" id="username" name="username">
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password">
+      <input type="submit" value="Iniciar sesión">
+    </form>
+    <h2>Registrarse</h2>
+    <form method="post" action="register.php">
+      <label for="username">Nombre de usuario:</label>
+      <input type="text" id="username" name="username">
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password">
+      <input type="submit" value="Registrarse">
+    </form>
+  <?php } ?>
+</main>
