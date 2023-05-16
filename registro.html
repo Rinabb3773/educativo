@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Registro de cuenta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="center">
+        <h1>REGISTRARSE</h1>
+        <form method="post" action="registrar.php">
+
+            <div class="txt_field">
+                <input type="text" name="usuario" id="usuario" required>
+                <span></span>
+                <div class="icon">
+                    <ion-icon name="person"></ion-icon>
+                </div>
+                <label>Nombre de usuario</label>
+            </div>
+            <div class="txt_field">
+                <input type="password" name="contrasena" id="contrasena" required>
+                <span></span>
+                <div class="icon">
+                    <ion-icon name="lock-closed"></ion-icon>
+                </div>
+                <label>Contraseña</label>
+            </div>
+            <input type="submit" name="registrar" value="REGISTRARSE">
+        </form>
+        <div class="signup_link">
+            ¿Ya tienes una cuenta? <a href="index.html">Iniciar sesión</a>
+        </div>
+    </div>
+</body>
+
+</html>
