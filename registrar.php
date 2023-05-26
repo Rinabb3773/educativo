@@ -11,33 +11,18 @@ function ConnectionToDB() {
     return $db;
 }
 
-function select_row_by_clause($table, $clause){
-    $db = ConnectionToDB();
-    $stmt = $db->prepare("SELECT * FROM $table WHERE $clause");
-    $stmt->execute();
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    if(!$rows){
-        $row = array();
-        return $row;
-    } else {
-        $row = $rows[0];
-        return $row;
-    }
-}
-
 $usuario = $_POST['usuario'];
 $contrasena = $_POST['contrasena'];
 
 $conexion = ConnectionToDB();
 
-$query = "INSERT INTO mathcoachusuario (usuario, clave) VALUES (:usuario, :contrasena)";
+$query = "INSERT INTO usuarios (usuario, contrasena) VALUES (:usuario, :contrasena)";
 $stmt = $conexion->prepare($query);
 $stmt->bindParam(':usuario', $usuario);
 $stmt->bindParam(':contrasena', $contrasena);
 
 if ($stmt->execute()) {
-    $lastInsertId = $conexion->lastInsertId();
-    echo "El usuario con ID $lastInsertId ha sido registrado correctamente en la base de datos.";
+    echo "El usuario ha sido registrado correctamente en la base de datos.";
 } else {
     echo "Error al registrar al usuario: " . $stmt->errorInfo()[2];
 }
