@@ -25,7 +25,15 @@ function select_row_by_clause($table, $clause){
     }
 }
 
+// End of select_row_by_clause ------------------------------------------------$
+        $Email = $_POST["Email"];
+        $UserPassword = $_POST["Password"];
+        $row = select_row_by_clause("mathcoachusuario","email = '$Email'");
+        $TablePassword = $row["clave"];
+        $StudentNumber = $row['id'];
+
 // Obtener los valores ingresados por el usuario
+
 $usuario = $_POST['usuario'];
 $contrasena = $_POST['contrasena'];
 
