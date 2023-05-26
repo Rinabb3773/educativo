@@ -1,0 +1,61 @@
+/* estilos.css */
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  background-color: #96A1EE;
+  color: #fff;
+  padding: 10px 0;
+}
+
+.logo h1 {
+  margin: 0;
+}
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.menu li {
+  margin-right: 10px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  background-color: #96A1EE;
+  padding: 0;
+}
+
+.submenu li {
+  margin: 0;
+}
+
+.menu li:hover .submenu {
+  display: block;
+}
+
+h2 {
+  margin-top: 30px;
+}
+
+p {
+  margin-bottom: 20px;
+}
