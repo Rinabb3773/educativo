@@ -1,7 +1,7 @@
 <?php
 function ConnectionToDB() {
     $servername = 'localhost';
-    $dbname = 'valero'; // Reemplaza con el nombre de tu base de datos
+    $dbname = 'ddseu2'; // Reemplaza con el nombre de tu base de datos
     $charset = "utf8";
     $username = 'ddseu2'; // Reemplaza con tu nombre de usuario
     $password = 'ddseu2_123456'; // Reemplaza con tu contraseña
@@ -34,11 +34,12 @@ $query = "INSERT INTO mathcoachusuario (usuario, clave) VALUES (:usuario, :contr
 $stmt = $conexion->prepare($query);
 $stmt->bindParam(':usuario', $usuario);
 $stmt->bindParam(':contrasena', $contrasena);
+
 if ($stmt->execute()) {
-    header("Location: index.html");
-    exit();
+    $lastInsertId = $conexion->lastInsertId();
+    echo "El usuario con ID $lastInsertId ha sido registrado correctamente en la base de datos.";
 } else {
-    echo "Error al registrar al usuario: " . $conexion->errorInfo()[2];
+    echo "Error al registrar al usuario: " . $stmt->errorInfo()[2];
 }
 
 $conexion = null;
