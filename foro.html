@@ -37,7 +37,23 @@
   <div class="container">
     <h2>Bienvenido al foro</h2>
     <p>Selecciona una materia para ver y comentar.</p>
-    <!-- Aquí se mostrarían los temas y comentarios sobre la materia selecciona$
+    <div id="publicaciones">
+      <!-- Aquí se mostrarían las publicaciones -->
+    </div>
+    <div id="nueva-publicacion">
+      <h3>Nueva Publicación</h3>
+      <form id="form-publicacion">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo"><br>
+        <label for="contenido">Contenido:</label>
+        <textarea id="contenido" name="contenido"></textarea><br>
+        <label for="etiquetas">Etiquetas:</label>
+        <input type="text" id="etiquetas" name="etiquetas"><br>
+        <label for="archivo">Adjuntar Archivo:</label>
+        <input type="file" id="archivo" name="archivo"><br>
+        <input type="submit" value="Publicar">
+      </form>
+    </div>
   </div>
 
   <script src="script.js"></script>
