@@ -1,6 +1,10 @@
-/* estilos.css */
+/* colorforo.css */
+
+/* Estilos generales */
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
@@ -9,53 +13,134 @@ body {
   padding: 20px;
 }
 
+/* Estilos de encabezado */
 header {
-  background-color: #96A1EE;
+  background-color: #333;
   color: #fff;
-  padding: 10px 0;
+  padding: 10px;
 }
 
 .logo h1 {
   margin: 0;
 }
 
+/* Estilos de navegación */
+nav {
+  margin-top: 10px;
+}
+
 .menu {
-  list-style: none;
+  list-style-type: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  align-items: center;
 }
 
 .menu li {
-  margin-right: 10px;
+  display: inline-block;
+  position: relative;
 }
 
-.menu a {
-  text-decoration: none;
+.menu li a {
+  display: block;
   color: #fff;
+  text-decoration: none;
   padding: 10px;
+}
+
+.menu li:hover > a {
+  background-color: #555;
 }
 
 .submenu {
   display: none;
   position: absolute;
-  background-color: #96A1EE;
-  padding: 0;
+  background-color: #555;
+  padding: 10px;
 }
 
 .submenu li {
-  margin: 0;
+  display: block;
 }
 
 .menu li:hover .submenu {
   display: block;
 }
 
+/* Estilos de contenido */
 h2 {
   margin-top: 30px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
 }
 
-p {
-  margin-bottom: 20px;
+#publicaciones {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+#publicaciones:hover {
+  background-color: #f1f1f1;
+}
+
+#nueva-publicacion {
+  margin-top: 20px;
+}
+
+#form-publicacion label {
+  display: block;
+  margin-top: 10px;
+}
+
+#form-publicacion input[type="text"],
+#form-publicacion textarea {
+  width: 100%;
+  padding: 5px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.custom-file-upload label {
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.custom-file-upload input[type="file"] {
+  display: none;
+}
+
+#form-publicacion input[type="submit"] {
+  margin-top: 10px;
+  padding: 10px 32px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#form-publicacion input[type="submit"]:hover {
+  background-color: #555;
+  transform: rotate(2deg);
 }
