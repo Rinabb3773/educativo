@@ -56,6 +56,9 @@ nav {
   position: absolute;
   background-color: #555;
   padding: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1;
 }
 
 .submenu li {
@@ -89,11 +92,28 @@ h2 {
 
 #nueva-publicacion {
   margin-top: 20px;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+#nueva-publicacion:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+#form-publicacion {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 #form-publicacion label {
   display: block;
   margin-top: 10px;
+  color: #333;
 }
 
 #form-publicacion input[type="text"],
@@ -105,27 +125,7 @@ h2 {
   border-radius: 5px;
 }
 
-.custom-file-upload {
-  display: inline-block;
-  padding: 6px 12px;
-  cursor: pointer;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-}
-
-.custom-file-upload label {
-  display: inline-block;
-  padding: 6px 12px;
-  cursor: pointer;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-}
-
-.custom-file-upload input[type="file"] {
+#form-publicacion input[type="file"] {
   display: none;
 }
 
@@ -143,4 +143,63 @@ h2 {
 #form-publicacion input[type="submit"]:hover {
   background-color: #555;
   transform: rotate(2deg);
+}
+
+/* Estilos de la calculadora neuronal */
+.calculator-container {
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.calculator-container h1 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+}
+
+.calculator-container label {
+  display: block;
+  margin-top: 10px;
+  color: #333;
+}
+
+.calculator-container input[type="text"] {
+  width: 100%;
+  padding: 5px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.calculator-container button {
+  margin-top: 10px;
+  padding: 10px 32px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.calculator-container button:hover {
+  background-color: #555;
+  transform: rotate(2deg);
+}
+
+.calculator-container p {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 16px;
+  color: #333;
+}
+
+.calculator-container p#explicacion {
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 5px;
 }
