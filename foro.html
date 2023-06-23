@@ -179,7 +179,13 @@
           </li>
 
 
-
+<style>
+    /* Estilos de la lista */
+    .submenu {
+      max-height: 200px;
+      overflow-y: auto;
+    }
+  </style>
           <li><a href="#">Materias de Computación</a>
             <ul class="submenu">
 
@@ -250,13 +256,39 @@
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
     }
+     /* Estilos para la sección de comentarios */
+     .comentarios {
+      margin-top: 10px;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+    }
+    
+    .comentario {
+      margin-bottom: 5px;
+    }
+    
+    /* Estilos para el botón de comentar */
+    .btn-comentar {
+      margin-top: 10px;
+      padding: 6px 12px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .btn-comentar:hover {
+      transform: scale(1.05);
+    }
   </style>
 
 <div class="container">
   <h2>Bienvenido al foro</h2>
   <p>Selecciona una materia para ver y comentar.</p>
   <div id="nueva-publicacion">
-    <h3>Nueva Publicación</h3>
+    <h3>¿Qué estás pensando?</h3>
     <form id="form-publicacion">
       <label for="titulo">Título:</label>
       <input type="text" id="titulo" name="titulo"><br>
@@ -290,7 +322,8 @@
       titulo: titulo,
       contenido: contenido,
       etiquetas: etiquetas,
-      archivo: archivo
+      archivo: archivo,
+      comentarios: []
     };
 
     // Obtener las publicaciones almacenadas previamente
@@ -331,6 +364,10 @@
   // Función para mostrar las publicaciones en la página
   function mostrarPublicaciones() {
     var publicacionesGuardadas = obtenerPublicaciones();
+
+    // Invertir el orden del array de publicaciones (de más recientes a más antiguas)
+    publicacionesGuardadas = publicacionesGuardadas.reverse();
+
     var publicacionesHTML = "";
 
     // Recorrer el array de publicaciones y construir el HTML
@@ -346,15 +383,46 @@
         publicacionesHTML += "<p>Archivo adjunto: " + publicacion.archivo + "</p>";
       }
 
+      // Mostrar los comentarios
+      publicacionesHTML += "<h5>Comentarios:</h5>";
+      if (publicacion.comentarios.length > 0) {
+        for (var j = 0; j < publicacion.comentarios.length; j++) {
+          publicacionesHTML += "<div class='comentario'>" + publicacion.comentarios[j] + "</div>";
+        }
+      } else {
+        publicacionesHTML += "<p>No hay comentarios.</p>";
+      }
+
+      // Formulario para agregar un comentario
+      publicacionesHTML += "<form style='margin-top: 10px; padding: 10px; background-color: #f5f5f5; border-radius: 5px;' class='comentarios' id='form-comentario-" + i + "' onsubmit='agregarComentario(event, " + i + ")'>";
+      publicacionesHTML += "<textarea style='width: 100%; height: 80px; padding: 5px; border: 1px solid #ccc; border-radius: 5px;' id='comentario-" + i + "' placeholder='Escribe un comentario'></textarea>";
+      publicacionesHTML += "<button style='margin-top: 5px; padding: 6px 12px; background-color: #333; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: transform 0.3s ease;' type='submit'>Comentar</button>";
+      publicacionesHTML += "</form>";
+
       // Agregar botón de borrado
       publicacionesHTML += "<button style='margin-top: 5px; padding: 6px 12px; background-color: #333; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: transform 0.3s ease;' onclick='borrarPublicacion(" + i + ")'>Borrar</button>";
       publicacionesHTML += "</div>";
       publicacionesHTML += "<hr style='border: none; border-top: 1px solid #ccc; border-radius: 5px; margin: 10px 0;'>";
-
     }
 
     // Mostrar el HTML de las publicaciones en el contenedor correspondiente
     document.getElementById("publicaciones").innerHTML = publicacionesHTML;
+  }
+
+  // Función para agregar un comentario a una publicación
+  function agregarComentario(event, index) {
+    event.preventDefault();
+
+    var comentarioInput = document.getElementById("comentario-" + index);
+    var comentario = comentarioInput.value;
+
+    if (comentario.trim() !== "") {
+      var publicacionesGuardadas = obtenerPublicaciones();
+      publicacionesGuardadas[index].comentarios.push(comentario);
+      guardarPublicaciones(publicacionesGuardadas);
+      mostrarPublicaciones();
+      comentarioInput.value = "";
+    }
   }
 
   // Función para borrar una publicación
